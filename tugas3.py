@@ -23,8 +23,11 @@ class dataTentara:
         data = self.nama,self.umur,self.kekuatan
         return str(data)
 
-    def set_kekuatan(self):
-        self.kekuatan += 100
+    def set_kekuatan(self, banyak):
+        self.kekuatan += banyak
+
+    def set_level(self, naik):
+        self.level += naik
 
     def get_nama(self):
         return self.nama
@@ -113,11 +116,23 @@ class Tentara:
         if jenis in self.d:
             for key in self.d.keys():
                 if key == jenis:
-                    print(self.d[key].set_kekuatan())
+                    print(self.d[key].set_kekuatan(100))
                     
         else:
             print("Tidak ada "+jenis)
-    
+
+    def beraksi(self, nama_operasi):
+        if nama_operasi in self.operasi:
+            for i in self.operasi:
+                if self.operasi[i][2] <= 0:
+                    print("Tidak ada personil pada tim operasi "+nama_operasi)
+                else:
+                    
+                    
+        else:
+            print("Tidak ada operasi "+nama_operasi)
+        
+
 
 print("nilai awal")
 t = Tentara(int(input()))
@@ -145,10 +160,13 @@ while(True):
     elif perintah[0] == 'keluar':
         t.keluar_operasi(perintah[1],perintah[2])
 
-
     #pelatihan sniper
     elif perintah[0] == 'pelatihan':
         t.pelatihan(perintah[1])
+
+    #BERAKSI​ OPERASI​ <namaOperasi​>
+    elif perintah[0] == 'beraksi':
+        t.beraksi(perintah[2])
 
 
 
